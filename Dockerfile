@@ -1,4 +1,4 @@
-FROM public.ecr.aws/aws-observability/aws-for-fluent-bit:2.21.3
+FROM amazon/aws-for-fluent-bit:latest
 
-COPY application.conf /fluent-bit/etc/application.conf
-COPY parser.conf /fluent-bit/etc/parser.conf
+ADD extra.conf /extra.conf
+ADD parser.conf /parser.conf
