@@ -1,0 +1,45 @@
+{
+	"family": "firelens-example-firehose",
+	"taskRoleArn": "arn:aws:iam::XXXXXXXXXXXX:role/ecs_task_iam_role",
+	"executionRoleArn": "arn:aws:iam::XXXXXXXXXXXX:role/ecs_task_execution_role",
+	"containerDefinitions": [
+		{
+			"essential": true,
+			"image": "11111111111.dkr.ecr.us-east-1.amazonaws.com/custom-fluent-bit:stable",
+			"name": "log_router",
+			"firelensConfiguration": {
+				"type": "fluentbit",
+				"options": {
+					"config-file-type": "file",
+					"config-file-value": "/extra.conf"
+				}
+			},
+			"logConfiguration": {
+				"logDriver": "awslogs",
+				"options": {
+					"awslogs-group": "firelens-container",
+					"awslogs-region": "ap-northeast-1",
+					"awslogs-create-group": "true",
+					"awslogs-stream-prefix": "firelens"
+				}
+			},
+			"environment": [
+				{
+					"name": "BUCKET_NAME",
+					"value": "toshihirock-example-bucket"
+				}
+			],
+			"memoryReservation": 50
+		 },
+		 {
+			 "essential": true,
+			 "image": "httpd",
+			 "name": "app",
+			 "logConfiguration": {
+				 "logDriver":"awsfirelens"
+				}
+			},
+			"memoryReservation": 100
+		}
+	]
+}
