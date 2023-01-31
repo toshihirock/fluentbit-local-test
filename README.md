@@ -4,10 +4,7 @@
 ```
 docker build -t flunetbit-local .
 docker run -d flunetbit-local
-docker exec -it ${CONTAINER_ID} /bin/bash
-
-# in docker
-/fluent-bit/bin/fluent-bit -c /fluent-bit/etc/application.conf
+docker run flunetbit-local  /bin/sh -c "/fluent-bit/bin/fluent-bit -c /fluent-bit/etc/application.conf"
 ```
 
 # Ref
