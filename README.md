@@ -7,8 +7,8 @@
 # edit dummy data input
 vi extra.conf
 
-docker build -t flunetbit-local .
-docker run flunetbit-local  /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf"
+docker build -t flunet-bit-local .
+docker run flunet-bit-local  /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf"
 ```
 
 ## Outputs which uses AWS credential(e.g Amazon Cloudwatch)
@@ -18,13 +18,13 @@ If you want to use outputs which uses AWS credential(e.g Amazon Cloudwatch), set
 ```
 # edit outputs
 vi extra.conf
-docker build -t flunetbit-local .
+docker build -t flunet-bit-local .
 
 # set AWS credential environments
 export AWS_ACCESS_KEY_ID=....
 export AWS_SECRET_ACCESS_KEY=....
 
-docker run -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} flunetbit-local /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf"
+docker run -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} flunet-bit-local /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf"
 ```
 
 ## Use ECS
