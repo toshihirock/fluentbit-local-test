@@ -6,8 +6,8 @@
 ```
 # edit dummy data input
 vi extra.conf
+
 docker build -t flunetbit-local .
-docker run -d flunetbit-local
 docker run flunetbit-local  /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf"
 ```
 
@@ -16,6 +16,11 @@ docker run flunetbit-local  /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.con
 If you want to use outputs which uses AWS credential(e.g Amazon Cloudwatch), set environments.
 
 ```
+# edit outputs
+vi extra.conf
+docker build -t flunetbit-local .
+
+# set AWS credential environments
 export AWS_ACCESS_KEY_ID=....
 export AWS_SECRET_ACCESS_KEY=....
 
