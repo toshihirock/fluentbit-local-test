@@ -24,7 +24,7 @@ docker build -t flunetbit-local .
 export AWS_ACCESS_KEY_ID=....
 export AWS_SECRET_ACCESS_KEY=....
 
-docker run -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} flunetbit-local /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf""
+docker run -e AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID} -e AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY} flunetbit-local /bin/sh -c "/fluent-bit/bin/fluent-bit -c /extra.conf"
 ```
 
 ## Use ECS
