@@ -1,11 +1,17 @@
 {
-	"family": "firelens-example-firehose",
-	"taskRoleArn": "arn:aws:iam::XXXXXXXXXXXX:role/ecs_task_iam_role",
-	"executionRoleArn": "arn:aws:iam::XXXXXXXXXXXX:role/ecs_task_execution_role",
+	"family": "firelens-example-s3",
+	"networkMode": "awsvpc",
+	"memory": "512",
+	"cpu": "256",
+          "requiresCompatibilities": [
+		      "FARGATE"
+        ],
+	"taskRoleArn": "arn:aws:iam::xxxxxxx:role/AdminTaskRoleForECS",
+	"executionRoleArn": "arn:aws:iam::xxxxxx:role/ecsTaskExecutionRole",
 	"containerDefinitions": [
 		{
 			"essential": true,
-			"image": "11111111111.dkr.ecr.us-east-1.amazonaws.com/custom-fluent-bit:stable",
+			"image": "xxxxxx.dkr.ecr.ap-northeast-1.amazonaws.com/custom-flunet-bit:latest",
 			"name": "log_router",
 			"firelensConfiguration": {
 				"type": "fluentbit",
@@ -26,7 +32,7 @@
 			"environment": [
 				{
 					"name": "BUCKET_NAME",
-					"value": "toshihirock-example-bucket"
+					"value": "toshihirock-samlocal"
 				}
 			],
 			"memoryReservation": 50
@@ -36,8 +42,7 @@
 			 "image": "httpd",
 			 "name": "app",
 			 "logConfiguration": {
-				 "logDriver":"awsfirelens"
-				}
+				 "logDriver": "awsfirelens"
 			},
 			"memoryReservation": 100
 		}
